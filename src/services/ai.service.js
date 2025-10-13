@@ -10,4 +10,4 @@ async function generateResponse(prompt) {
   return response.text;
 }
 
-module.exports = generateResponse;
+module.exports = { generateResponse };
