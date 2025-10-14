@@ -22,37 +22,50 @@ function initSocketServer(httpServer) {
   });
 
   io.on("connection", (socket) => {
+    const mongoose = require("mongoose");
+
     socket.on("ai-message", async (messagePayload) => {
-      await messageModel.create({
-        chat: messagePayload.chat,
-        user: socket.user._id,
-        content: messagePayload.content,
-        role: "user",
-      });
-      const chatHistory = await messageModel.find({
-        chat: messagePayload.chat,
-      });
-      console.log(
-        "Chat history:",
-        chatHistory.map((item) => {
-          return {
+      try {
+        const chatId = new mongoose.Types.ObjectId(messagePayload.chat);
+
+        await messageModel.create({
+          chat: chatId,
+          user: socket.user._id,
+          content: messagePayload.content,
+          role: "user",
+        });
+
+        const chatHistory = await messageModel.find({ chat: chatId });
+
+        console.log(
+          "Chat history:",
+          chatHistory.map((item) => ({
             role: item.role,
             parts: [{ text: item.content }],
-          };
-        })
-      );
+          }))
+        );
 
-      const response = await aiService.generateResponse(messagePayload.content);
-      await messageModel.create({
-        chat: messagePayload.chat,
-        user: socket.user._id,
-        content: response,
-        role: "model",
-      });
-      socket.emit("ai-message", {
-        content: response,
-        chat: messagePayload.chat,
-      });
+        const response = await aiService.generateResponse(
+          chatHistory.map((item) => ({
+            role: item.role,
+            parts: [{ text: item.content }],
+          }))
+        );
+
+        await messageModel.create({
+          chat: chatId,
+          user: socket.user._id,
+          content: response,
+          role: "model",
+        });
+
+        socket.emit("ai-message", {
+          content: response,
+          chat: messagePayload.chat,
+        });
+      } catch (err) {
+        console.error("Error in ai-message handler:", err);
+      }
     });
   });
 }
