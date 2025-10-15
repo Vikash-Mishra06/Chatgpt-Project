@@ -2,8 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const path = require('path');
-const connectDb = require('./db/db');
-connectDb()
+
 const app = express();
 
 /* Routes */
