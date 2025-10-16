@@ -2,14 +2,14 @@ const { Pinecone } = require("@pinecone-database/pinecone");
 
 const pc = new Pinecone({ apiKey: process.env.PINECONE_API_KEY });
 
-const ChatGptIndex = pc.Index("Chat-gpt");
+const ChatGptIndex = pc.Index("chat-gpt-project");
 
 async function createMemory({ vectors, metadata, messageId }) {
-  await ChatGptIndex.upsert({
+  await ChatGptIndex.upsert([{
     id: messageId,
     values: vectors,
     metadata,
-  });
+  }]);
 }
 
 async function queryMemory({ queryVector, limit = 5, metadata }) {

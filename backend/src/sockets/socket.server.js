@@ -28,7 +28,7 @@ function initSocketServer(httpServer) {
   io.on("connection", (socket) => {
     socket.on("ai-message", async (messagePayload) => {
 
-      await messageModel.create({
+      const userMessage = await messageModel.create({
         chat: messagePayload.chat,
         user: socket.user._id,
         content: messagePayload.content,
@@ -36,7 +36,24 @@ function initSocketServer(httpServer) {
       });
 
       const vectors = await aiService.generateVector(messagePayload.content)
-      console.log("Vector generated", vectors)
+
+      await createMemory({
+        vectors,
+        messageId: userMessage._id.toString(),
+        metadata: {
+          chat: messagePayload.chat,
+          user: socket.user._id,
+          text: messagePayload.content
+        },
+      });
+
+      const memory = await queryMemory({
+        queryVector: vectors,
+        limit: 3,
+        metadata: {}
+      })
+
+      console.log(memory)
 
       const chatHistory = await messageModel.find({
         chat: messagePayload.chat,
@@ -49,11 +66,24 @@ function initSocketServer(httpServer) {
         }
       }));
 
-      await messageModel.create({
+      const aiMessage = await messageModel.create({
         chat: messagePayload.chat,
         user: socket.user._id,
         content: response,
         role: "model",
+      });
+
+      const aiVectors = await aiService.generateVector(response);
+      
+
+      await createMemory({
+        vectors: aiVectors,
+        messageId: aiMessage._id.toString(),
+        metadata: {
+          chat: messagePayload.chat,
+          user: socket.user._id,
+          text: response
+        },
       });
 
       socket.emit("ai-response", {
