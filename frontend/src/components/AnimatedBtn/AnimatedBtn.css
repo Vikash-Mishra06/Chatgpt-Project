@@ -1,0 +1,38 @@
+.animated-btn {
+  font-size: 0.875rem; /* slightly smaller text */
+  font-weight: 700;
+  padding: 0.35rem 0.8rem; /* smaller padding */
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem; /* slightly smaller rounding */
+  color: #000; /* black text */
+  background-color: #b5ff6d; /* green background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto; /* controlled by padding */
+  white-space: nowrap;
+  min-width: fit-content;
+}
+
+/* Responsive sizing */
+@media (min-width: 640px) {
+  .animated-btn {
+    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .animated-btn {
+    font-size: 0.95rem;
+    padding: 0.45rem 1.1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .animated-btn {
+    font-size: 1rem;
+    padding: 0.5rem 1.2rem;
+  }
+}

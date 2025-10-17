@@ -1,27 +1,27 @@
 {
-  "name": "backend",
+  "name": "day23_chatgpt",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node server.js",
+    "start": "node server.js",
+    "dev": "npx nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
-    "@google/genai": "^1.25.0",
-    "@google/generative-ai": "^0.24.1",
+    "@google/genai": "^1.15.0",
+    "@pinecone-database/pinecone": "^6.1.2",
     "bcryptjs": "^3.0.2",
     "cookie": "^1.0.2",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
+    "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.19.1",
+    "mongoose": "^8.17.1",
     "socket.io": "^4.8.1"
   }
 }

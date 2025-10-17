@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-
 const messageSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -11,12 +10,12 @@ const messageSchema = new mongoose.Schema({
         ref: "chat"
     },
     content: {
-        type: String,
+        type: String, 
         required: true
     },
     role: {
         type: String,
-        enum: [ "user", "model", "system" ],
+        enums: ["user", "model", "system"],
         default: "user"
     }
 }, {
@@ -25,4 +24,4 @@ const messageSchema = new mongoose.Schema({
 
 const messageModel = mongoose.model("message", messageSchema);
 
-module.exports = messageModel;
+module.exports = messageModel

@@ -1,19 +1,44 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const path = require('path');
+
+// routes
+const authRoutes = require('./routes/auth.routes');
+const chatRoutes = require('./routes/chat.routes');
 
 const app = express();
 
-/* Routes */
-const authRoutes = require('./routes/auth.routes');
-const chatRoutes = require("./routes/chat.routes");
-
+// middlewares
+app.use(cors({
+    origin: ['http://localhost:5173'],
+    credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser());
 
-/* Using Routes */
+// Root route for health check
+app.get('/', (req, res) => {
+    res.json({
+        message: "Laura AI Backend is running!",
+        status: "success",
+        timestamp: new Date().toISOString(),
+        endpoints: {
+            auth: "/api/auth",
+            chat: "/api/chat"
+        }
+    });
+});
+
+//using routes
 app.use('/api/auth', authRoutes);
 app.use('/api/chat', chatRoutes);
+
+// Debug route to test if routing works
+app.get('/api/test', (req, res) => {
+    res.json({
+        message: "Test route working!",
+        status: "success"
+    });
+});
 
 module.exports = app;

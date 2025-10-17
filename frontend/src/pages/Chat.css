@@ -1,0 +1,54 @@
+/* Custom Scrollbar Styles for Nova Theme - #1C2417 Theme */
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #1C2417; /* Dark green theme color */
+  border-radius: 10px;
+  border: 1px solid rgba(28, 36, 23, 0.3);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #b5ff6d; /* Bright green on hover for accent */
+  box-shadow: 0 0 10px rgba(181, 255, 109, 0.5);
+}
+
+/* Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #1C2417 rgba(0, 0, 0, 0.2);
+}
+
+/* Sidebar scrollbar - slightly thinner */
+.sidebar-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-thumb {
+  background: #1C2417; /* Dark green */
+  border-radius: 8px;
+  border: 1px solid rgba(28, 36, 23, 0.2);
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #b5ff6d; /* Accent on hover */
+  box-shadow: 0 0 8px rgba(181, 255, 109, 0.4);
+}
+
+.sidebar-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #1C2417 rgba(0, 0, 0, 0.1);
+}
