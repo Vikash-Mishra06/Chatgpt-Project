@@ -9,6 +9,7 @@ const ChatSidebar = ({
   onSelectChat,
   onLogout,
   formatTime,
+  setSidebarOpen,
 }) => {
   return (
     <div
@@ -20,7 +21,7 @@ const ChatSidebar = ({
         <div className="!p-4 !pb-6 border-b border-[#3c6e71]/30">
           <div className="flex items-center justify-between gap-3">
             {/* Logo + Text */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 cursor-pointer" onClick={onNewChat}>
               <svg
                 className="h-6 w-6 text-[#b5ff6d]"
                 fill="none"
@@ -41,12 +42,14 @@ const ChatSidebar = ({
                 <path d="M9 13v2"></path>
               </svg>
 
-              <h2 className="text-lg font-bold bg-gradient-to-r from-[#b5ff6d] via-white to-[#b5ff6d] 
+              <h2 className="text-lg font-bold bg-gradient-to-r from-[#b5ff6d] via-white to-[#b5ff6d]
   bg-clip-text text-transparent">Loura-Ai</h2>
             </div>
 
-            {/* New Chat Button */}
-            <AnimatedBtn onClick={onNewChat}>New Chat</AnimatedBtn>
+            {/* New Chat Button - Hidden on small screens */}
+            <div className="hidden md:block">
+              <AnimatedBtn onClick={onNewChat}>New Chat</AnimatedBtn>
+            </div>
           </div>
         </div>
 
@@ -74,7 +77,10 @@ const ChatSidebar = ({
               {chatHistory.map((chat) => (
                 <div
                   key={chat.id}
-                  onClick={() => onSelectChat(chat.id)}
+                  onClick={() => {
+                    onSelectChat(chat.id);
+                    setSidebarOpen(false);
+                  }}
                   className={`!p-3 rounded-xl cursor-pointer transition-all duration-300 hover:scale-105 relative ${chat.isActive
                       ? "border-1 border-[#b5ff6d] shadow-lg "
                       : "hover:bg-black/30 border border-transparent"
@@ -103,7 +109,11 @@ const ChatSidebar = ({
 
         {/* Sidebar Footer */}
         <div className="!p-4 !pb-20 md:!pb-7 lg:!pb-6 border-t border-[#3c6e71]/30">
-          <div className="w-full flex justify-center">
+          <div className="w-full flex justify-center gap-3">
+            {/* New Chat Button - Visible on small screens */}
+            <div className="md:hidden">
+              <AnimatedBtn onClick={onNewChat}>New Chat</AnimatedBtn>
+            </div>
             <AnimatedBtn onClick={onLogout}>Logout</AnimatedBtn>
           </div>
         </div>

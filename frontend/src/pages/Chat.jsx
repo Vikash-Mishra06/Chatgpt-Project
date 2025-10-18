@@ -99,30 +99,36 @@ const Chat = () => {
         onSelectChat={selectChat}
         onLogout={handleLogout}
         formatTime={formatTime}
+        setSidebarOpen={setSidebarOpen}
       />
 
-      <ChatHeader
-        sidebarOpen={sidebarOpen}
-        onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
-      />
+      <div
+        className="flex-1 flex flex-col"
+        onClick={() => sidebarOpen && setSidebarOpen(false)}
+      >
+        <ChatHeader
+          sidebarOpen={sidebarOpen}
+          onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
+        />
 
-      <MessageArea
-        sidebarOpen={sidebarOpen}
-        currentChatId={currentChatId}
-        messages={messages}
-        isTyping={isTyping}
-        messagesEndRef={messagesEndRef}
-        onNewChat={() => toggleModal(true)}
-      />
+        <MessageArea
+          sidebarOpen={sidebarOpen}
+          currentChatId={currentChatId}
+          messages={messages}
+          isTyping={isTyping}
+          messagesEndRef={messagesEndRef}
+          onNewChat={() => toggleModal(true)}
+        />
 
-      {/* Always show ChatInput, even without a chat */}
-      <ChatInput
-        sidebarOpen={sidebarOpen}
-        inputMessage={inputMessage}
-        setInputMessage={setInputMessage}
-        onSendMessage={handleSendMessage}
-        isTyping={isTyping}
-      />
+        {/* Always show ChatInput, even without a chat */}
+        <ChatInput
+          sidebarOpen={sidebarOpen}
+          inputMessage={inputMessage}
+          setInputMessage={setInputMessage}
+          onSendMessage={handleSendMessage}
+          isTyping={isTyping}
+        />
+      </div>
     </div>
   );
 };
