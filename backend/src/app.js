@@ -10,7 +10,7 @@ const app = express();
 
 // middlewares
 app.use(cors({
-    origin: ['https://chatgpt-project-azure.vercel.app/'],
+    origin: ['https://chatgpt-project-azure.vercel.app'],
     credentials: true
 }));
 app.use(express.json());
