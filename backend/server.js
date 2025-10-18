@@ -1,8 +1,4 @@
 require('dotenv').config();
-console.log("=== ENVIRONMENT VARIABLES ===");
-console.log("MONGODB_URI:", process.env.MONGODB_URI);
-console.log("JWT_SECRET:", process.env.JWT_SECRET ? "SET" : "NOT SET");
-console.log("==============================");
 
 const app = require('./src/app');
 const connectDB = require('./src/db/db');

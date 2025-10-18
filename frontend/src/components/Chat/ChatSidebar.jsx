@@ -42,7 +42,8 @@ const ChatSidebar = ({
         <path d="M9 13v2"></path>
       </svg>
 
-      <h2 className="text-lg font-bold text-gray-200">Loura-Ai</h2>
+      <h2 className="text-lg font-bold bg-gradient-to-r from-[#b5ff6d] via-white to-[#b5ff6d] 
+  bg-clip-text text-transparent">Loura-Ai</h2>
     </div>
 
     {/* New Chat Button */}

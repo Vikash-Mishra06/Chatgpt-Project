@@ -15,6 +15,10 @@
   min-width: fit-content;
 }
 
+.animated-btn:hover {
+  background-color: #99fb37; /* slightly darker green on hover */
+}
+
 /* Responsive sizing */
 @media (min-width: 640px) {
   .animated-btn {

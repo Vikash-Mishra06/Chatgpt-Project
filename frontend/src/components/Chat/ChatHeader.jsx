@@ -50,7 +50,8 @@ const ChatHeader = ({ sidebarOpen, onToggleSidebar }) => {
             to="/"
             className="flex items-center gap-2 hover:scale-105 transition-transform"
           >
-            <h1 className="text-xl md:text-2xl uppercase font-bold text-gray-200 bg-clip-text">
+            <h1 className="text-xl md:text-2xl uppercase font-bold bg-gradient-to-r from-[#b5ff6d] via-white to-[#b5ff6d] 
+  bg-clip-text text-transparent">
               Loura-Ai
             </h1>
             <svg className="h-6 w-6  text-[#b5ff6d]" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">

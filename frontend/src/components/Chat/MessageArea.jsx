@@ -37,7 +37,8 @@ const MessageArea = ({
             </svg>
           </div>
           <h2 className="text-3xl font-bold text-white !mb-4">
-            Welcome to Loura-Ai
+            Welcome to <span className='bg-gradient-to-r from-[#b5ff6d] via-white to-[#b5ff6d] 
+  bg-clip-text text-transparent'>Loura-Ai</span>
           </h2>
           <p className="text-lg text-gray-400 !mb-6 max-w-md">
             Your intelligent AI companion is ready to help. Create a new

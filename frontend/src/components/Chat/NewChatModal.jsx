@@ -20,21 +20,21 @@ const NewChatModal = ({
           value={chatTitle}
           onChange={(e) => setChatTitle(e.target.value)}
           placeholder="Enter chat title..."
-          className="w-full !px-4 !py-3 bg-black/50 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:border-[#3c6e71] focus:outline-none focus:ring-2 focus:ring-[#3c6e71]/50 transition-all !mb-4"
+          className="w-full !px-4 !py-3 bg-black/50 border border-[#b5ff6d] rounded-xl text-white placeholder-gray-400 focus:border-[#b5ff6d] focus:outline-none transition-all !mb-4"
           autoFocus
           onKeyDown={(e) => e.key === "Enter" && onCreateChat()}
         />
         <div className="flex gap-3 justify-center sm:justify-end">
           <button
             onClick={onClose}
-            className="flex-1 sm:flex-none !px-4 sm:!px-6 !py-2 sm:!py-3 border border-gray-600 text-gray-400 hover:text-white hover:border-gray-400 rounded-xl transition-all text-sm sm:text-base font-medium min-w-[100px]"
+            className="flex-1 sm:flex-none !px-4 sm:!px-6 !py-2 sm:!py-3 border border-[#b5ff6d] text-gray-200 rounded-xl transition-all text-sm sm:text-base font-medium min-w-[100px]"
           >
             Cancel
           </button>
           <button
             onClick={onCreateChat}
             disabled={!chatTitle.trim()}
-            className="flex-1 sm:flex-none !px-4 sm:!px-6 !py-2 sm:!py-3 border-2 border-[#549295] bg-transparent text-white hover:bg-[#549295] rounded-xl transition-all text-sm sm:text-base font-medium min-w-[100px] disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 sm:flex-none !px-4 sm:!px-6 !py-2 sm:!py-3 border-2 border-[#b5ff6d] bg-transparent text-gray-200 rounded-xl transition-all text-sm sm:text-base font-medium min-w-[100px] disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Create Chat
           </button>
