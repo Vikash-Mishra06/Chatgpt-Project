@@ -175,7 +175,7 @@ const FormattedMessage = ({ message }) => {
       // Headers (text wrapped in **)
       if (trimmedLine.match(/^\*\*.*\*\*:?$/)) {
         elements.push(
-          <h3 key={currentIndex++} className="text-lg font-semibold text-[#3c6e71] border-b border-[#3c6e71]/30 pb-1 mt-3 mb-2">
+          <h3 key={currentIndex++} className="text-lg font-semibold text-[#B5FF6D] border-b border-[#B5FF6D]/30 pb-1 mt-3 mb-2">
             {trimmedLine.replace(/^\*\*|\*\*:?$/g, '')}
           </h3>
         );
@@ -185,7 +185,7 @@ const FormattedMessage = ({ message }) => {
         const bulletText = trimmedLine.replace(/^[\*\-\•]\s/, '');
         elements.push(
           <div key={currentIndex++} className="flex items-start mb-1">
-            <span className="text-[#3c6e71] mr-2 mt-1">•</span>
+            <span className="text-[#B5FF6D] mr-2 mt-1">•</span>
             <span className="text-sm md:text-base leading-relaxed">
               {formatInlineText(bulletText)}
             </span>
@@ -198,7 +198,7 @@ const FormattedMessage = ({ message }) => {
         const listText = trimmedLine.replace(/^\d+\.\s/, '');
         elements.push(
           <div key={currentIndex++} className="flex items-start mb-1">
-            <span className="text-[#3c6e71] mr-2 mt-1 font-semibold">{number}.</span>
+            <span className="text-[#B5FF6D] mr-2 mt-1 font-semibold">{number}.</span>
             <span className="text-sm md:text-base leading-relaxed">
               {formatInlineText(listText)}
             </span>
