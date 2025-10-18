@@ -15,13 +15,15 @@ const MessageArea = ({
 }) => {
   return (
     <div
-      className={`fixed overflow-y-auto bg-[#0B0B0D] !p-4 !space-y-4 custom-scrollbar transition-all duration-300 ${sidebarOpen
-        ? "left-0 right-0 w-full md:left-70 md:right-0 md:w-[calc(100%-320px)]"
-        : "left-0 right-0 w-full"
-        }`}
+      className={`fixed overflow-y-auto bg-[#0B0B0D] !p-4 !space-y-4 custom-scrollbar transition-all duration-300 ${
+        sidebarOpen
+          ? "left-0 right-0 w-full md:left-[320px] md:w-[calc(100%-320px)]"
+          : "left-0 right-0 w-full"
+      }`}
       style={{
         top: "80px",
         bottom: "80px",
+        height: "calc(100vh - 140px)",
       }}
     >
       {!currentChatId ? (
@@ -54,10 +56,11 @@ const MessageArea = ({
                 }`}
             >
               <div
-                className={`flex justify-between items-center gap-5 max-w-xs md:max-w-md lg:max-w-xl xl:max-w-2xl !p-4 rounded-2xl shadow-lg transition-all duration-300 ${message.sender === "user"
-                  ? "bg-gradient-to-r from-[#b5ff6d] to-[#b5ff6d] text-black font-semibold "
-                  : "backdrop-blur-2xl bg-black/30 border border-[#b5ff6d]/30 text-white "
-                  }`}
+                className={`flex flex-col w-full sm:w-auto max-w-[85vw] sm:max-w-xs md:max-w-md lg:max-w-xl xl:max-w-2xl !p-4 rounded-2xl shadow-lg transition-all duration-300 ${
+                  message.sender === "user"
+                    ? "bg-gradient-to-r from-[#b5ff6d] to-[#b5ff6d] text-black font-semibold"
+                    : "backdrop-blur-2xl bg-black/30 border border-[#b5ff6d]/30 text-white"
+                }`}
               >
                 {message.sender === "Loura" && (
                   <div className="flex items-center  gap-2 !mb-2">
@@ -88,7 +91,7 @@ const MessageArea = ({
           {/* Typing Indicator */}
           {isTyping && (
             <div className="flex justify-start">
-              <div className="backdrop-blur-2xl bg-black/30 border border-[#b5ff6d]/30 !p-4 rounded-2xl ">
+              <div className="backdrop-blur-2xl bg-black/30 border border-[#b5ff6d]/30 !p-4 rounded-2xl w-full sm:w-auto max-w-[85vw] sm:max-w-xs">
                 <div className="flex items-center gap-2 !mb-2">
                   <svg className="h-6 w-6  text-[#b5ff6d]" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 8V4H8"></path>

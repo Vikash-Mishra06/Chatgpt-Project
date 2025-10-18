@@ -12,44 +12,43 @@ const ChatSidebar = ({
 }) => {
   return (
     <div
-      className={`${
-        sidebarOpen ? "w-70" : "w-0"
-      } transition-all duration-300 overflow-hidden backdrop-blur-2xl bg-[#0B0B0D] border-r border-[#3c6e71]/30 fixed left-0 top-0 h-full z-20`}
+      className={`${sidebarOpen ? "w-70" : "w-0"
+        } transition-all duration-300 overflow-hidden backdrop-blur-2xl bg-[#0B0B0D] border-r border-[#3c6e71]/30 fixed left-0 top-0 h-full z-20`}
     >
       <div className="flex flex-col h-full">
         {/* Sidebar Header */}
         <div className="!p-4 !pb-6 border-b border-[#3c6e71]/30">
-  <div className="flex items-center justify-between gap-3">
-    {/* Logo + Text */}
-    <div className="flex items-center gap-2">
-      <svg
-        className="h-6 w-6 text-[#b5ff6d]"
-        fill="none"
-        height="24"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M12 8V4H8"></path>
-        <rect height="12" rx="2" width="16" x="4" y="8"></rect>
-        <path d="M2 14h2"></path>
-        <path d="M20 14h2"></path>
-        <path d="M15 13v2"></path>
-        <path d="M9 13v2"></path>
-      </svg>
+          <div className="flex items-center justify-between gap-3">
+            {/* Logo + Text */}
+            <div className="flex items-center gap-2">
+              <svg
+                className="h-6 w-6 text-[#b5ff6d]"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M12 8V4H8"></path>
+                <rect height="12" rx="2" width="16" x="4" y="8"></rect>
+                <path d="M2 14h2"></path>
+                <path d="M20 14h2"></path>
+                <path d="M15 13v2"></path>
+                <path d="M9 13v2"></path>
+              </svg>
 
-      <h2 className="text-lg font-bold bg-gradient-to-r from-[#b5ff6d] via-white to-[#b5ff6d] 
+              <h2 className="text-lg font-bold bg-gradient-to-r from-[#b5ff6d] via-white to-[#b5ff6d] 
   bg-clip-text text-transparent">Loura-Ai</h2>
-    </div>
+            </div>
 
-    {/* New Chat Button */}
-    <AnimatedBtn onClick={onNewChat}>New Chat</AnimatedBtn>
-  </div>
-</div>
+            {/* New Chat Button */}
+            <AnimatedBtn onClick={onNewChat}>New Chat</AnimatedBtn>
+          </div>
+        </div>
 
 
         {/* Chat History */}
@@ -76,19 +75,17 @@ const ChatSidebar = ({
                 <div
                   key={chat.id}
                   onClick={() => onSelectChat(chat.id)}
-                  className={`!p-3 rounded-xl cursor-pointer transition-all duration-300 hover:scale-105 relative ${
-                    chat.isActive
+                  className={`!p-3 rounded-xl cursor-pointer transition-all duration-300 hover:scale-105 relative ${chat.isActive
                       ? "border-1 border-[#b5ff6d] shadow-lg "
                       : "hover:bg-black/30 border border-transparent"
-                  }`}
+                    }`}
                 >
                   {chat.isActive && (
                     <div className="absolute left-0 top-0 bottom-0 w-1 rounded-l-xl "></div>
                   )}
                   <div className="flex justify-between items-start !mb-1">
-                    <h3 className={`text-sm font-semibold truncate ${
-                      chat.isActive ? "text-[#b5ff6d]" : "text-white"
-                    }`}>
+                    <h3 className={`text-sm font-semibold truncate ${chat.isActive ? "text-[#b5ff6d]" : "text-white"
+                      }`}>
                       {chat.title}
                     </h3>
                     <span className="text-xs text-gray-500 ml-2">
